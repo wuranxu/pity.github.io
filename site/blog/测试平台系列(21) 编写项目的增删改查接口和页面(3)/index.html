@@ -1,0 +1,995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>21.编写项目的增删改查接口和页面(3) - Pity接口测试平台</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Pity接口测试平台" class="md-header__button md-logo" aria-label="Pity接口测试平台" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pity接口测试平台
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              21.编写项目的增删改查接口和页面(3)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/wuranxu/pity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pity接口测试平台" class="md-nav__button md-logo" aria-label="Pity接口测试平台" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    Pity接口测试平台
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/wuranxu/pity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        项目介绍
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        快速开始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        安装
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="安装" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          安装
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        开发博客
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="开发博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          开发博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%28%E5%BA%8F%29/" class="md-nav__link">
+        测试平台(序)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%281%29%20%E6%90%AD%E5%BB%BAFlask%20Web%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+        1.搭建Flask Web服务
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%282%29%20%E7%BB%99app%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        2.给app添加配置
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%283%29%20%E7%BB%99Hello%20World%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        3.给Hello World添加日志
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%284%29%20%E4%BD%BF%E7%94%A8%E8%93%9D%E5%9B%BE%28Blueprint%29/" class="md-nav__link">
+        4.使用蓝图(Blueprint)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%285%29%20%E5%BC%95%E5%85%A5Ant%20design%20Pro/" class="md-nav__link">
+        5.引入Ant design Pro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%286%29%20%E9%85%8D%E7%BD%AEflask-sqlalchemy/" class="md-nav__link">
+        6.配置flask-sqlalchemy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%287%29%20%E6%94%B9%E9%80%A0%E6%B3%A8%E5%86%8C%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        7.改造注册接口
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%288%29%20%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%81%94%E8%B0%83%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%28part%201%29/" class="md-nav__link">
+        8.与前端联调注册/登录接口(part 1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%289%29%20%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%81%94%E8%B0%83%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%28part%202%29/" class="md-nav__link">
+        9.与前端联调注册/登录接口(part 2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2810%29%20%E7%BC%96%E5%86%99%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        10.编写注册页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2811%29%20%E5%B0%81%E8%A3%85Request%E7%B1%BB/" class="md-nav__link">
+        11.封装Request类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2812%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%281%29/" class="md-nav__link">
+        12.编写类postman页面(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2813%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%282%29/" class="md-nav__link">
+        13.编写类postman页面(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2814%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%283%29/" class="md-nav__link">
+        14.编写类postman页面(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2815%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%284%29/" class="md-nav__link">
+        15.编写类postman页面(4)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2816%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%285%29/" class="md-nav__link">
+        16.编写类postman页面(5)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2817%29%20%E8%AE%BE%E8%AE%A1%E7%94%A8%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        17.设计用例生命周期
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2818%29%20%E9%A1%B9%E7%9B%AE%E7%94%A8%E4%BE%8B%E8%A1%A8%E8%AE%BE%E8%AE%A1%E5%92%8C%E6%9D%83%E9%99%90%E6%94%B9%E9%80%A0/" class="md-nav__link">
+        18.项目用例表设计和权限改造
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2819%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%281%29/" class="md-nav__link">
+        19.编写项目的增删改查接口 和页面(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2820%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%282%29/" class="md-nav__link">
+        20.编写项目的增删改查接口和页面(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        21.编写项目的增删改查接口和页面(3)
+      </a>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2822%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%284%29/" class="md-nav__link">
+        22.编写项目的增删改查接口和页面(4)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2823%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        23.编写项目详情页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2824%29%20%E7%BC%96%E5%86%99%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        24.编写成员管理功能
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2825%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E6%A0%91/" class="md-nav__link">
+        25.编写用例树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2826%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%281%29/" class="md-nav__link">
+        26.编写用例详情页(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2827%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%282%29/" class="md-nav__link">
+        27.编写用例详情页(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2828%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%283%29/" class="md-nav__link">
+        28.编写用例详情页(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2829%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        29.编写用例执行的方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2830%29%20%E5%AE%8C%E5%96%84%E6%96%AD%E8%A8%80%E9%83%A8%E5%88%86/" class="md-nav__link">
+        30.完善断言部分
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2831%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%8A%29/" class="md-nav__link">
+        31.编写环境配置页面(上)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2832%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%AD%29/" class="md-nav__link">
+        32.编写环境配置页面(中)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2833%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%8B%29/" class="md-nav__link">
+        33.编写环境配置页面(下)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2834%29%20%E7%BC%96%E5%86%99%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        34.编写全局变量接口
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2835%29%20%E7%BC%96%E5%86%99%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        35.编写全局变量管理页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2836%29%20%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        36.使用全局变量
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2837%29%20%E8%BF%90%E7%94%A8%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%99%E7%94%A8%E4%BE%8B%E5%8A%A0%E4%B8%8A%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        37.运用装饰器给用例加上执行日志
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2838%29%20%E6%8E%A5%E5%85%A5github%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/" class="md-nav__link">
+        38.接入github第三方登录
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2839%29%20%E6%8E%A5%E5%85%A5github%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%28%E4%B8%8B%29/" class="md-nav__link">
+        39.接入github第三方登录(下)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2840%29%20%E6%89%BE%E4%B8%AA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        40.找个开源项目测试
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2841%29%20%E7%BC%96%E5%86%99%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%9F%E8%83%BD%EF%BC%88%E4%B8%8A%EF%BC%89/" class="md-nav__link">
+        41.编写数据构造器功能（上）
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2842%29%20%E7%BC%96%E5%86%99%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%9F%E8%83%BD%EF%BC%88%E4%B8%8B%EF%BC%89/" class="md-nav__link">
+        42.编写数据构造器功能（下）
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2843%29%20aiohttp%E5%88%9D%E4%BD%93%E9%AA%8C/" class="md-nav__link">
+        43.aiohttp初体验
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>21.编写项目的增删改查接口和页面(3)</h1>
+                
+                <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">回顾</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">上回我们编写好了添加项目和查询项目2个接口，那今天我们就把它应用到项目中吧！所以本节内容会以<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">前端部分</strong>为主，目的是为了联调后端编写好的接口，并在页面上能够给用户使用。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">调整项目表</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">是这样的，因为我们的项目有对应的图片，并且缺少<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">描述字段</strong>，所以我们这里把项目表进行一些调整。</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">图片字段</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">描述字段</section></li></ul>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">描述字段很好说，至于图片字段就比较麻烦了！如果对于<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">单节点</strong>部署的应用，图片可以放入类似<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">static</strong>的目录中，以xxx.jpg的形式存在。但是如果我们需要部署到<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">多台机器</strong>的话，假设是2台机器，用户上传一次图片，其中只有一个服务接收到了图片文件，那就会很<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">麻烦</strong>。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;"><code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">那么怎么解决这个问题呢？</code></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">在企业中，一般公司会有oss(云存储)服务，比如: <strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">阿里云oss</strong>，<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">腾讯云cos</strong>，还有七牛云等等。我之前太监的项目用的就是七牛云+自有域名，由于没续费，所以我们换一种简单的方式:</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">直接在数据库加一个<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">TEXT</strong>字段，存放图片的base64数据，但是注意大小一定要限制，然后html里面通过img标签解析数据即可。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;"><code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">由于项目可能不太需要头像这种东西，以后这种图片留到个人头像会比较好一点，antd提供了文字头像，相信大家用过钉钉等IM工具的都知道，有的人如果没有头像的话，会用名字当头像比如"鸣人"。</code></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">所以我们这里就不用那么麻烦了，直接只加一个描述字段就好了！头像用默认的就行！</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">调整models/Project.py</section></li></ul>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-4-7/1617811098860-image.png" alt="添加描述字段" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">添加描述字段</figcaption></figure>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">调整ProjectDao.py</section></li></ul>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-4-7/1617809589668-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">调整添加项目接口</section></li></ul>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-4-7/1617809619262-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">把<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">描述字段</strong>加进去即可，因为这个字段不是必填的，所以我们给他一个默认值: <code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">空字符串</code></p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">构思页面</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">回忆一下我们当时编写postman页面的时候，我们是把对应的组件分层了。由于我们当时做postman页面的时候是有成品给我们参考的，但是关于<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">项目管理页面</strong>，我们的的确确是没有任何参考，所以我们先要在脑海里构思一下页面<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">大概长什么样</strong>！</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">参考Ant Design Pro，我们就可以有个大概的方向了！</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-4-5/1617627422552-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">采用这种<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">卡片列表</strong>，可以帮助我们展示项目。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">引入滚动条</span><span class="suffix" style="display: none;"></span></h3>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-4-5/1617638172541-g.gif" alt="达到这样的效果就好了" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">达到这样的效果就好了</figcaption></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这个页面是我从之前一个<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">太监</strong>了的项目里面拷贝来的，为了节约时间就继续沿用了。</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">安装依赖</section></li></ul>
+<pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;">cnpm&nbsp;install&nbsp;nprogress&nbsp;--save<br></code></pre>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">在src/utils/utils.js添加方法</p>
+<pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;NProgress&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'nprogress'</span>;<br><span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;引入样式</span><br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'nprogress/nprogress.css'</span><br><br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">export</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;process&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">async</span>&nbsp;func&nbsp;=&gt;&nbsp;{<br>&nbsp;&nbsp;NProgress.start();<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;func();<br>&nbsp;&nbsp;NProgress.done();<br>};<br></code></pre>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这样当我们需要在某个方法执行之前加载进度条的时候，调用process方法即可。</p>
+<h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">项目卡片列表页面代码</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">其实<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">react</strong>并不是一个很复杂的框架，可能对于Jsx需要有一定的了解。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我们的组件都可以细分成4个部分:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">引用</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">即引入其他组件或者库</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">状态管理</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">状态是什么概念呢，举个例子，你页面有个loading组件，什么时候他loading，什么时候结束loading，你通过什么来判断它是否loading，这个判断的变量，就叫做状态。</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">而咱们的页面也有很多地方通过<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">状态</strong>来展示，比如我们通过data(数组)来存放我们的项目列表，初始化为空数组。<em style="font-style: italic; color: black;">当页面开始渲染</em>，组件开始加载的时候，我们变去后端服务<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">拉取数据</strong>，改写data数组，把项目的信息放入到数组里面。</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">注意，这个时候状态就发生了变更！react会自动对比变更的状态来渲染新的页面，这里面过程很复杂。建议去查阅react相关资料，笔者也不是很熟悉里面的<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">细节</strong>，想要了解的话，去搜索<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">virtual dom</strong>。</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">交互方法的编写</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我们有很多组件都有涉及到一些<em style="font-style: italic; color: black;">交互方法</em>，比如说: 点击某个按钮，触发什么事件。这些都是需要编写方法的，比如上图中 用户点击<em style="font-style: italic; color: black;">添加项目</em>，我们需要做什么呢？</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我们需要把对话框显示出来对不对？所以我们需要做的就是: <em style="font-style: italic; color: black;">改变对话框的状态</em>，把他从隐藏改为<em style="font-style: italic; color: black;">显示</em>。</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">类HTML页面的编写</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这一步比较简单了，采用jsx的语法去编写html页面。大体上和html都差不多，只不过这边可以写一些js代码，通过<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">{}</code>就可以包裹JS代码，相对来说还是很方便的！掌握了jsx，es6，基本上react上手就很快了！</p>
+</section></li></ul>
+<pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;React,&nbsp;{&nbsp;useEffect,&nbsp;useState&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'react'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;PageContainer&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@ant-design/pro-layout'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;Avatar,&nbsp;Button,&nbsp;Card,&nbsp;Col,&nbsp;Empty,&nbsp;Input,&nbsp;Popover,&nbsp;Row,&nbsp;Select,&nbsp;Spin,&nbsp;Tooltip&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'antd'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;QuestionCircleOutlined&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@ant-design/icons'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;FormForModal&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@/components/PityForm/FormForModal'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;history&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'umi'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;listProject&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@/services/project'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;auth&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@/utils/auth'</span>;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;process&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'@/utils/utils'</span>;<br><br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;{Search}&nbsp;=&nbsp;Input;<br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;{Option}&nbsp;=&nbsp;Select;<br><br><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">export</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">default</span>&nbsp;()&nbsp;=&gt;&nbsp;{<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;[data,&nbsp;setData]&nbsp;=&nbsp;useState([]);<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;[pagination,&nbsp;setPagination]&nbsp;=&nbsp;useState({<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">current</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>,&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">pageSize</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">10</span>,&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">total</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>});<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;[visible,&nbsp;setVisible]&nbsp;=&nbsp;useState(<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">false</span>);<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;[users,&nbsp;setUsers]&nbsp;=&nbsp;useState([]);<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;[userMap,&nbsp;setUserMap]&nbsp;=&nbsp;useState({});<br><br>&nbsp;&nbsp;useEffect(<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">async</span>&nbsp;()&nbsp;=&gt;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;process(<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">async</span>&nbsp;()=&gt;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;res&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;listProject({<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">page</span>:&nbsp;pagination.current,&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">size</span>:&nbsp;pagination.size});<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;(auth.response(res))&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setData(res.data)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setPagination({...pagination,&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">total</span>:&nbsp;res.total})<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;});<br>&nbsp;&nbsp;},&nbsp;[])<br><br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;onSearchProject&nbsp;=&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">projectName</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;this.props.dispatch({</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;type:&nbsp;'project/fetch',</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;payload:&nbsp;{page:&nbsp;1,&nbsp;size:&nbsp;1000,&nbsp;projectName}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;})</span><br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;onHandleModal&nbsp;=&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">status</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;setVisible(status);<br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;onHandleCreate&nbsp;=&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">values</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;this.props.dispatch({</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;type:&nbsp;'project/insert',</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;payload:&nbsp;values,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5c6370; font-style: italic; line-height: 26px;">//&nbsp;})</span><br>&nbsp;&nbsp;}<br><br><br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;content&nbsp;=&nbsp;<span class="hljs-function" style="line-height: 26px;">(<span class="hljs-params" style="line-height: 26px;">item</span>)&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;<span class="xml" style="line-height: 26px;"><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">div</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>负责人:&nbsp;{userMap[item.owner].name}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>&nbsp;*/}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>简介:&nbsp;{item.description&nbsp;||&nbsp;'无'}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>&nbsp;*/}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/*&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>更新时间:&nbsp;{item.updateTime}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span>&nbsp;*/}<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">div</span>&gt;</span></span><br>&nbsp;&nbsp;};<br><br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;opt&nbsp;=&nbsp;<span class="xml" style="line-height: 26px;"><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Select</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">placeholder</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请选择项目组长"</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users.map(item&nbsp;=&gt;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Option</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">key</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{item.value}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">value</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{item.value}</span>&gt;</span>{item.label}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Option</span>&gt;</span>)<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Select</span>&gt;</span></span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;fields&nbsp;=&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">name</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'projectName'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">label</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'项目名称'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">required</span>:&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">true</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">message</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请输入项目名称"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'input'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">placeholder</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请输入项目名称"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">name</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'owner'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">label</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'项目负责人'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">required</span>:&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">true</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">component</span>:&nbsp;opt,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'select'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">name</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'description'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">label</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'项目描述'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">required</span>:&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">false</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">message</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请输入项目描述"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'textarea'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">placeholder</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请输入项目描述"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">name</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'private'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">label</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'是否私有'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">required</span>:&nbsp;<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">true</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">message</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请选择项目是否私有"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'switch'</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">valuePropName</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"checked"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="xml" style="line-height: 26px;"><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">PageContainer</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">title</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{false}</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">FormForModal</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">width</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{600}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">title</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"添加项目"</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">left</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{6}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">right</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{18}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">record</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{}}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">visible</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{visible}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">onCancel</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{()</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onHandleModal(false)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}&nbsp;fields={fields}&nbsp;onFinish={onHandleCreate}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Row</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">gutter</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{8}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{marginBottom:</span>&nbsp;<span class="hljs-attr">16</span>}}&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">span</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{18}</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Button</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"primary"</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">onClick</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{()</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onHandleModal(true)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}&gt;创建项目<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Tooltip</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">title</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"只有超级管理员可以创建项目"</span>&gt;</span><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">QuestionCircleOutlined</span>/&gt;</span><span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Tooltip</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Button</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">span</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{6}</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Search</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">onSearch</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{onSearchProject}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{float:</span>&nbsp;'<span class="hljs-attr">right</span>'}}&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">placeholder</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"请输入项目名称"</span>/&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Row</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Spin</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">spinning</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{false}</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Row</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">gutter</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{16}</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.length&nbsp;===&nbsp;0&nbsp;?&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">span</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{24}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{textAlign:</span>&nbsp;'<span class="hljs-attr">center</span>',&nbsp;<span class="hljs-attr">marginBottom:</span>&nbsp;<span class="hljs-attr">12</span>}}&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Card</span>&gt;</span><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Empty</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">description</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"暂无项目,&nbsp;快点击『创建项目』创建一个吧!"</span>/&gt;</span><span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Card</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&gt;</span>&nbsp;:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.map(item&nbsp;=&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">span</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{4}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{marginBottom:</span>&nbsp;<span class="hljs-attr">12</span>}}&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Popover</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">content</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{content(item)}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">placement</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"rightTop"</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Card</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">hoverable</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">bordered</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{false}</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{borderRadius:</span>&nbsp;<span class="hljs-attr">16</span>,&nbsp;<span class="hljs-attr">textAlign:</span>&nbsp;'<span class="hljs-attr">center</span>'}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">bodyStyle</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{padding:</span>&nbsp;<span class="hljs-attr">16</span>}}&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">onClick</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{()</span>&nbsp;=&gt;</span>&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;history.push(`/project/${item.id}`);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Avatar</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{backgroundColor:</span>&nbsp;'#<span class="hljs-attr">87d068</span>'}}&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">size</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{64}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span>{item.name.slice(0,&nbsp;2)}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Avatar</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">style</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">{{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">textAlign:</span>&nbsp;'<span class="hljs-attr">center</span>',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">fontWeight:</span>&nbsp;'<span class="hljs-attr">bold</span>',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">fontSize:</span>&nbsp;<span class="hljs-attr">18</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">marginTop:</span>&nbsp;<span class="hljs-attr">8</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}}&gt;</span>{item.name}<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">p</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Card</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Popover</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Col</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Row</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">Spin</span>&gt;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">PageContainer</span>&gt;</span></span><br>&nbsp;&nbsp;&nbsp;&nbsp;)<br>}<br><br></span></span></span></span></span></span></span></span></code></pre>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">先大致瞅瞅这段代码，后续笔者会跟进讲解。今天内容就到这里吧~😁</p>
+</section>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2820%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%282%29/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 20.编写项目的增删改查接口和页面(2)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              20.编写项目的增删改查接口和页面(2)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2822%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%284%29/" class="md-footer__link md-footer__link--next" aria-label="Next: 22.编写项目的增删改查接口和页面(4)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              22.编写项目的增删改查接口和页面(4)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/wuranxu/pityWeb" target="_blank" rel="noopener" title="pityWeb(前端项目)" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>
