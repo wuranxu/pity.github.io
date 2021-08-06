@@ -52,7 +52,7 @@ nav:
   - 快速开始: introduction/介绍.md
 
   - 安装:
-    - index.md
+    - introduction/介绍.md
 
   - 开发博客:
     - 测试平台(序): blog/测试平台(序).md
