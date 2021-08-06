@@ -1,0 +1,1016 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>14.编写类postman页面(3) - Pity接口测试平台</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Pity接口测试平台" class="md-header__button md-logo" aria-label="Pity接口测试平台" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pity接口测试平台
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              14.编写类postman页面(3)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/wuranxu/pity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pity接口测试平台" class="md-nav__button md-logo" aria-label="Pity接口测试平台" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    Pity接口测试平台
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/wuranxu/pity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        项目介绍
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        快速开始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        安装
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="安装" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          安装
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        开发博客
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="开发博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          开发博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%28%E5%BA%8F%29/" class="md-nav__link">
+        测试平台(序)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%281%29%20%E6%90%AD%E5%BB%BAFlask%20Web%E6%9C%8D%E5%8A%A1/" class="md-nav__link">
+        1.搭建Flask Web服务
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%282%29%20%E7%BB%99app%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        2.给app添加配置
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%283%29%20%E7%BB%99Hello%20World%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        3.给Hello World添加日志
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%284%29%20%E4%BD%BF%E7%94%A8%E8%93%9D%E5%9B%BE%28Blueprint%29/" class="md-nav__link">
+        4.使用蓝图(Blueprint)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%285%29%20%E5%BC%95%E5%85%A5Ant%20design%20Pro/" class="md-nav__link">
+        5.引入Ant design Pro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%286%29%20%E9%85%8D%E7%BD%AEflask-sqlalchemy/" class="md-nav__link">
+        6.配置flask-sqlalchemy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%287%29%20%E6%94%B9%E9%80%A0%E6%B3%A8%E5%86%8C%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        7.改造注册接口
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%288%29%20%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%81%94%E8%B0%83%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%28part%201%29/" class="md-nav__link">
+        8.与前端联调注册/登录接口(part 1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%289%29%20%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%81%94%E8%B0%83%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%28part%202%29/" class="md-nav__link">
+        9.与前端联调注册/登录接口(part 2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2810%29%20%E7%BC%96%E5%86%99%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        10.编写注册页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2811%29%20%E5%B0%81%E8%A3%85Request%E7%B1%BB/" class="md-nav__link">
+        11.封装Request类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2812%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%281%29/" class="md-nav__link">
+        12.编写类postman页面(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2813%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%282%29/" class="md-nav__link">
+        13.编写类postman页面(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        14.编写类postman页面(3)
+      </a>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2815%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%284%29/" class="md-nav__link">
+        15.编写类postman页面(4)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2816%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%285%29/" class="md-nav__link">
+        16.编写类postman页面(5)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2817%29%20%E8%AE%BE%E8%AE%A1%E7%94%A8%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="md-nav__link">
+        17.设计用例生命周期
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2818%29%20%E9%A1%B9%E7%9B%AE%E7%94%A8%E4%BE%8B%E8%A1%A8%E8%AE%BE%E8%AE%A1%E5%92%8C%E6%9D%83%E9%99%90%E6%94%B9%E9%80%A0/" class="md-nav__link">
+        18.项目用例表设计和权限改造
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2819%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%281%29/" class="md-nav__link">
+        19.编写项目的增删改查接口 和页面(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2820%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%282%29/" class="md-nav__link">
+        20.编写项目的增删改查接口和页面(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2821%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%283%29/" class="md-nav__link">
+        21.编写项目的增删改查接口和页面(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2822%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%A1%B5%E9%9D%A2%284%29/" class="md-nav__link">
+        22.编写项目的增删改查接口和页面(4)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2823%29%20%E7%BC%96%E5%86%99%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        23.编写项目详情页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2824%29%20%E7%BC%96%E5%86%99%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        24.编写成员管理功能
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2825%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E6%A0%91/" class="md-nav__link">
+        25.编写用例树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2826%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%281%29/" class="md-nav__link">
+        26.编写用例详情页(1)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2827%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%282%29/" class="md-nav__link">
+        27.编写用例详情页(2)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2828%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5%283%29/" class="md-nav__link">
+        28.编写用例详情页(3)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2829%29%20%E7%BC%96%E5%86%99%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        29.编写用例执行的方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2830%29%20%E5%AE%8C%E5%96%84%E6%96%AD%E8%A8%80%E9%83%A8%E5%88%86/" class="md-nav__link">
+        30.完善断言部分
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2831%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%8A%29/" class="md-nav__link">
+        31.编写环境配置页面(上)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2832%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%AD%29/" class="md-nav__link">
+        32.编写环境配置页面(中)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2833%29%20%E7%BC%96%E5%86%99%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2%28%E4%B8%8B%29/" class="md-nav__link">
+        33.编写环境配置页面(下)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2834%29%20%E7%BC%96%E5%86%99%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        34.编写全局变量接口
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2835%29%20%E7%BC%96%E5%86%99%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2/" class="md-nav__link">
+        35.编写全局变量管理页面
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2836%29%20%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        36.使用全局变量
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2837%29%20%E8%BF%90%E7%94%A8%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%99%E7%94%A8%E4%BE%8B%E5%8A%A0%E4%B8%8A%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        37.运用装饰器给用例加上执行日志
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2838%29%20%E6%8E%A5%E5%85%A5github%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/" class="md-nav__link">
+        38.接入github第三方登录
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2839%29%20%E6%8E%A5%E5%85%A5github%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%28%E4%B8%8B%29/" class="md-nav__link">
+        39.接入github第三方登录(下)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2840%29%20%E6%89%BE%E4%B8%AA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        40.找个开源项目测试
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2841%29%20%E7%BC%96%E5%86%99%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%9F%E8%83%BD%EF%BC%88%E4%B8%8A%EF%BC%89/" class="md-nav__link">
+        41.编写数据构造器功能（上）
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2842%29%20%E7%BC%96%E5%86%99%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%9F%E8%83%BD%EF%BC%88%E4%B8%8B%EF%BC%89/" class="md-nav__link">
+        42.编写数据构造器功能（下）
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2843%29%20aiohttp%E5%88%9D%E4%BD%93%E9%AA%8C/" class="md-nav__link">
+        43.aiohttp初体验
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>14.编写类postman页面(3)</h1>
+                
+                <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="padding: 0 10px; word-spacing: 0px; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; line-height: 1.6; letter-spacing: .034em; color: rgb(63, 63, 63); font-size: 16px; word-break: all;"><h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">编写类postman页面(3)</span><span class="suffix"></span></h2>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">回顾</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">记得上一节我们编写了postman的中间部分，其实还有header部分的一些表单数据没有编写完成，今天我们就尽量完成它并且尝试跑一个小小的demo。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">寻找可编辑表格组件</span><span class="suffix" style="display: none;"></span></h3>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615644084094-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">可以看到这里比较简单，基本上就是2块: <strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">文字部分</strong>和<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">可编辑表格</strong></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">可编辑表格的话，我们可以自己写，也可以直接用现成的。我们为了傻瓜一点，就采用ant design pro封装好的高阶组件(意思是功能齐全，简单好用)</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">具体地址: <a href="https://procomponents.ant.design/components/editable-table" style="word-wrap: break-word; font-weight: bold; color: #48b378; text-decoration: none; border-bottom: 1px solid #48b378;">ProComponents</a></p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615644225350-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">那么这个就是我们需要的，由于我们用的<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">JavaScript</code>而非<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">TypeScript</code>，所以呢我们需要复杂一点找到对应的源码:</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615644301753-image.png" alt="先展开代码然后点击这个js图标" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">先展开代码然后点击这个js图标</figcaption></figure>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615644329089-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">在弹出的网站就可以找到对应的JS代码了！</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我们这个项目本来就带有了pro的组件，所以不需要额外安装了哈。(亲测新版本还有点问题)</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">编写可编辑表格雏形</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">首先呢，我们这个组件是postman组件，但是其实这个可编辑组件是可以和后面的<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">headers</code>标签进行<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">复用</strong>的，所以我们单独把这个组件抽出来封装。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">新建<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">src/components/Table/EditableTable.jsx</code></p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615648788658-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">代码基本上是复制过来的，但是我们抽取了几个重要的参数:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">columns</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">由于我们的每个表格的字段可能不一样，所以说我们不能写死</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">dataSource</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">实际数据，本来不是这样的，但是发现这个组件有点bug，让我有点<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">小尴尬</strong></p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">setDataSource</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">改变dataSource的方法</p>
+</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;"><p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">title</p>
+<p style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">比如这里我们需要的title是<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">Query Params</strong></p>
+</section></li></ul>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615647405339-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">注意这里，这里我是从columns中拿到<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">真实字段</strong>，因为咱们还有其他字段比如后面的<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">删除</code>，拿到之后在用户点击<code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">新增一行数据</code>的时候默认给字段加上值。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">引入表格组件并编写columns</span><span class="suffix" style="display: none;"></span></h3>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615648848051-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">columns</section></li></ul>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615648876005-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">我设置了3个字段分别是<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">KEY</strong>,<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">VALUE</strong>, <strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">DESCRIPTION</strong>。与postman是保持一致的，然后最后一列我设置了一个图标(删除)，删除方法自己手动编写了（还是因为他有bug，无法删除）。因为我在官网没改源码的情况下也发现<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">无法删除</strong>。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">看看效果:</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-13/1615649005399-image.png" alt="雏形是有了" style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"><figcaption style="margin-top: 5px; text-align: center; color: #888; display: block; font-size: 12px; font-family: PingFangSC-Light;">雏形是有了</figcaption></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">其实postman做的更精致，下面的数据会改变url的内容。接下来我们也把这块实现了吧。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">改造URL</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">现在我们有了params参数，那么我们的url就由2部分构成了:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">url</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">params</section></li></ul>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">所以我们原先的url改变的时候如果有参数变动则需要修改参数项目，如果参数项目有变动也需要<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">修改url</strong>。</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">由于这个ProTable有一点点bug，笔者也搞了好久今晚，不过最后顺利完成了，大家pull最新的代码就可以看到效果了。可惜的是今天浪费太多时间了，就只简单对代码稍作描述了。</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652040093-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这个表格组件有些变化:</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">把正在编辑的key和修改可编辑key的方法抽离出来了</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">extra函数用来在表格数据变动的时候做一些额外的变动，因为表格变化我们得去更新url</section></li></ul>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">拼接url的方法</span><span class="suffix" style="display: none;"></span></h4>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652125572-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">url的规则是 http://www.xxx.com + ?参数1=值&amp;参数2=值2</p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">所以第一个参数用?隔开，后面都是用&amp;，代码写的很清楚了。</p>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">拆解url的方法</span><span class="suffix" style="display: none;"></span></h4>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652232006-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">这里写的<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">比较复杂</strong>，首先判断url里面有无参数，没有的话就把表单数据清空。接着就是取url的数据组成新的表单。但是表单的每一行是用时间区别的，这里js执行太快，所以我以数组索引+时间+10的方式，就算now全都一样，也没关系，因为索引肯定不一样，避免了一下子<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">添加多行</strong>的问题（当然你们是看不到这个问题的）。</p>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">删除参数</span><span class="suffix" style="display: none;"></span></h4>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652384201-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">删除参数的时候也重新拼接url给url输入框</p>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">输入框url变化也改变参数表格</span><span class="suffix" style="display: none;"></span></h4>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652435951-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<h4 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 18px; margin-top: 30px;"><span class="prefix" style="display: none;"></span><span class="content">新增了一些变量和set变量的方法</span><span class="suffix" style="display: none;"></span></h4>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652457560-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">文件总体代码可以去github看，这里篇幅有限就不贴了。</p>
+<h3 data-tool="mdnice编辑器" style="margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin-top: 1.2em;"><span style="background-image: url(https://files.mdnice.com/koala-3.png); background-size: 100% 100%; background-repeat: no-repeat; display: inline-block; width: 16px; height: 15px; line-height: 15px; margin-bottom: -1px;"></span><span class="prefix" style="display: none;"></span><span class="content" style="font-size: 17px; font-weight: bold; display: inline-block; margin-left: 8px; color: #48b378;">最终效果</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">找了个截图软件，让大家看看效果吧，晚安。</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-14/1615652971962-dd.gif" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<h2 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 22px; display: block; text-align: center; background-image: url(https://files.mdnice.com/koala-2.png); background-position: center center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 50px; margin-top: 1em; margin-bottom: 10px;"><span class="prefix" style="display: none;"></span><span class="content" style="text-align: center; display: inline-block; height: 38px; line-height: 42px; color: #48b378; background-position: left center; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-size: 63px; margin-top: 38px; font-size: 18px; margin-bottom: 10px;">广告时间</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;"><em style="font-style: italic; color: black;">预览地址:</em> <a href="http://47.112.32.195/" style="word-wrap: break-word; font-weight: bold; color: #48b378; text-decoration: none; border-bottom: 1px solid #48b378;">http://47.112.32.195/</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">后端代码地址: <a href="https://github.com/wuranxu/pity" style="word-wrap: break-word; font-weight: bold; color: #48b378; text-decoration: none; border-bottom: 1px solid #48b378;">https://github.com/wuranxu/pity</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">前端代码地址: <a href="https://github.com/wuranxu/pityWeb" style="word-wrap: break-word; font-weight: bold; color: #48b378; text-decoration: none; border-bottom: 1px solid #48b378;">https://github.com/wuranxu/pityWeb</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-bottom: 8px; margin: 0; padding-top: 1em; color: rgb(74,74,74); line-height: 1.75em;">欢迎关注公众号<strong style="font-weight: bold; line-height: 1.75em; color: rgb(74,74,74);">测试开发入坑</strong>，还有加群一起讨论相关问题呀！如果群二维码过期了，可以加我个人微信: <code style="font-size: 14px; word-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0 2px; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; color: #28ca71;">wuranxu</code> 我拉你进群~</p>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-10/1615391632083-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+<figure data-tool="mdnice编辑器" style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><img src="https://gitee.com/woodywrx/picture/raw/master/2021-3-10/1615390951439-image.png" alt style="display: block; margin: 0 auto; max-width: 100%; border-radius: 4px; margin-bottom: 25px;"></figure>
+</section>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2813%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%282%29/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 13.编写类postman页面(2)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              13.编写类postman页面(2)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E7%B3%BB%E5%88%97%2815%29%20%E7%BC%96%E5%86%99%E7%B1%BBpostman%E9%A1%B5%E9%9D%A2%284%29/" class="md-footer__link md-footer__link--next" aria-label="Next: 15.编写类postman页面(4)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              15.编写类postman页面(4)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/wuranxu/pityWeb" target="_blank" rel="noopener" title="pityWeb(前端项目)" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

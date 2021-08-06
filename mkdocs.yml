@@ -1,0 +1,101 @@
+site_name: Pity接口测试平台
+edit_uri: ""  
+theme:
+  name: material
+  logo: assets/logo.svg
+  palette:
+    primary: blue
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  features:
+    - navigation.top
+
+extra:
+  homepage: http://47.112.32.195/
+
+repo_url: https://github.com/wuranxu/pity
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/wuranxu/pityWeb
+      name: pityWeb(前端项目)
+
+plugins:
+  - search:
+      lang: ja
+
+
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+
+nav:
+  - 项目介绍: introduction/介绍.md
+
+  - 快速开始: introduction/介绍.md
+
+  - 安装:
+    - index.md
+
+  - 开发博客:
+    - 测试平台(序): blog/测试平台(序).md
+    - 1.搭建Flask Web服务: blog/测试平台系列(1) 搭建Flask Web服务.md
+    - 2.给app添加配置: blog/测试平台系列(2) 给app添加配置.md
+    - 3.给Hello World添加日志: blog/测试平台系列(3) 给Hello World添加日志.md
+    - 4.使用蓝图(Blueprint): blog/测试平台系列(4) 使用蓝图(Blueprint).md
+    - 5.引入Ant design Pro: blog/测试平台系列(5) 引入Ant design Pro.md
+    - 6.配置flask-sqlalchemy: blog/测试平台系列(6) 配置flask-sqlalchemy.md
+    - 7.改造注册接口: blog/测试平台系列(7) 改造注册接口.md
+    - 8.与前端联调注册/登录接口(part 1): blog/测试平台系列(8) 与前端联调注册登录接口(part 1).md
+    - 9.与前端联调注册/登录接口(part 2): blog/测试平台系列(9) 与前端联调注册登录接口(part 2).md
+    - 10.编写注册页面: blog/测试平台系列(10) 编写注册页面.md
+    - 11.封装Request类: blog/测试平台系列(11) 封装Request类.md
+    - 12.编写类postman页面(1): blog/测试平台系列(12) 编写类postman页面(1).md
+    - 13.编写类postman页面(2): blog/测试平台系列(13) 编写类postman页面(2).md
+    - 14.编写类postman页面(3): blog/测试平台系列(14) 编写类postman页面(3).md
+    - 15.编写类postman页面(4): blog/测试平台系列(15) 编写类postman页面(4).md
+    - 16.编写类postman页面(5): blog/测试平台系列(16) 编写类postman页面(5).md
+    - 17.设计用例生命周期: blog/测试平台系列(17) 设计用例生命周期.md
+    - 18.项目用例表设计和权限改造: blog/测试平台系列(18) 项目用例表设计和权限改造.md
+    - 19.编写项目的增删改查接口 和页面(1): blog/测试平台系列(19) 编写项目的增删改查接口和页面(1).md
+    - 20.编写项目的增删改查接口和页面(2): blog/测试平台系列(20) 编写项目的增删改查接口和页面(2).md
+    - 21.编写项目的增删改查接口和页面(3): blog/测试平台系列(21) 编写项目的增删改查接口和页面(3).md
+    - 22.编写项目的增删改查接口和页面(4): blog/测试平台系列(22) 编写项目的增删改查接口和页面(4).md
+    - 23.编写项目详情页面: blog/测试平台系列(23) 编写项目详情页面.md
+    - 24.编写成员管理功能: blog/测试平台系列(24) 编写成员管理功能.md
+    - 25.编写用例树: blog/测试平台系列(25) 编写用例树.md
+    - 26.编写用例详情页(1): blog/测试平台系列(26) 编写用例详情页(1).md
+    - 27.编写用例详情页(2): blog/测试平台系列(27) 编写用例详情页(2).md
+    - 28.编写用例详情页(3): blog/测试平台系列(28) 编写用例详情页(3).md
+    - 29.编写用例执行的方法: blog/测试平台系列(29) 编写用例执行的方法.md
+    - 30.完善断言部分: blog/测试平台系列(30) 完善断言部分.md
+    - 31.编写环境配置页面(上): blog/测试平台系列(31) 编写环境配置页面(上).md
+    - 32.编写环境配置页面(中): blog/测试平台系列(32) 编写环境配置页面(中).md
+    - 33.编写环境配置页面(下): blog/测试平台系列(33) 编写环境配置页面(下).md
+    - 34.编写全局变量接口: blog/测试平台系列(34) 编写全局变量接口.md
+    - 35.编写全局变量管理页面: blog/测试平台系列(35) 编写全局变量管理页面.md
+    - 36.使用全局变量: blog/测试平台系列(36) 使用全局变量.md
+    - 37.运用装饰器给用例加上执行日志: blog/测试平台系列(37) 运用装饰器给用例加上执行日志.md
+    - 38.接入github第三方登录: blog/测试平台系列(38) 接入github第三方登录.md
+    - 39.接入github第三方登录(下): blog/测试平台系列(39) 接入github第三方登录(下).md
+    - 40.找个开源项目测试: blog/测试平台系列(40) 找个开源项目测试.md
+    - 41.编写数据构造器功能（上）: blog/测试平台系列(41) 编写数据构造器功能（上）.md
+    - 42.编写数据构造器功能（下）: blog/测试平台系列(42) 编写数据构造器功能（下）.md
+    - 43.aiohttp初体验: blog/测试平台系列(43) aiohttp初体验.md
