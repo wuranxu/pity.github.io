@@ -36,10 +36,13 @@ extra:
       name: pityWeb(前端项目)
 
 plugins:
-  - search
+  - search:
+      lang: ja
 
 
 markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.highlight
   - pymdownx.superfences
   - admonition
