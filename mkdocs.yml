@@ -4,7 +4,8 @@ edit_uri: ""
 theme:
   name: "material"
   logo: assets/logo.svg
-  favicon: assets/logo.png
+  favicon: assets/logo.svg
+  # custom_dir: overrides
   palette:
     primary: blue
   icon:
@@ -36,12 +37,20 @@ extra:
       link: https://github.com/wuranxu/pityWeb
       name: pityWeb(前端项目)
 
+  disqus: 'pity'
+  # analytics:
+  #   provider: custom 
+
+
 plugins:
   - search:
       lang: ja
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+    - '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
 
 
 markdown_extensions:
@@ -113,3 +122,5 @@ nav:
   - 智囊团: friends/公众号.md
 
   - 联系作者: friends/联系作者.md
+
+
