@@ -53,9 +53,13 @@ markdown_extensions:
 nav:
   - 项目介绍: index.md
 
+  - 在线体验: deploy/在线预览.md
+
   - 快速开始:
     - 本地开发: requirements/准备条件.md
     - 线上部署: deploy/部署.md
+
+  - 帮助文档: help/帮助文档.md
 
   - 开发博客:
     - 测试平台(序): blog/测试平台(序).md
@@ -104,3 +108,5 @@ nav:
     - 43.aiohttp初体验: blog/测试平台系列(43) aiohttp初体验.md
 
   - 智囊团: friends/公众号.md
+
+  - 联系作者: friends/联系作者.md
