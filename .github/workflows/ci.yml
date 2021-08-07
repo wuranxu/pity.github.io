@@ -13,5 +13,4 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material 
-      - run: cp ./static/disqus.html /usr/local/lib/python3.*/site-packages/material/partials/integrations/disqus.html
       - run: mkdocs gh-deploy --force
