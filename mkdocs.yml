@@ -39,6 +39,9 @@ plugins:
   - search:
       lang: ja
 
+extra_css:
+  - stylesheets/extra.css
+
 
 markdown_extensions:
   - pymdownx.tasklist:
@@ -50,10 +53,9 @@ markdown_extensions:
 nav:
   - 项目介绍: index.md
 
-  - 快速开始: introduction/介绍.md
-
-  - 安装:
-    - introduction/介绍.md
+  - 快速开始:
+    - 本地开发: requirements/准备条件.md
+    - 线上部署: deploy/部署.md
 
   - 开发博客:
     - 测试平台(序): blog/测试平台(序).md
@@ -100,3 +102,5 @@ nav:
     - 41.编写数据构造器功能（上）: blog/测试平台系列(41) 编写数据构造器功能（上）.md
     - 42.编写数据构造器功能（下）: blog/测试平台系列(42) 编写数据构造器功能（下）.md
     - 43.aiohttp初体验: blog/测试平台系列(43) aiohttp初体验.md
+
+  - 智囊团: friends/公众号.md
