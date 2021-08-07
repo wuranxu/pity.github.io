@@ -4,6 +4,7 @@ edit_uri: ""
 theme:
   name: "material"
   logo: assets/logo.svg
+  favicon: assets/logo.png
   palette:
     primary: blue
   icon:
@@ -106,6 +107,8 @@ nav:
     - 41.编写数据构造器功能（上）: blog/测试平台系列(41) 编写数据构造器功能（上）.md
     - 42.编写数据构造器功能（下）: blog/测试平台系列(42) 编写数据构造器功能（下）.md
     - 43.aiohttp初体验: blog/测试平台系列(43) aiohttp初体验.md
+    - 44.前后端合并(上): blog/测试平台系列(44) 前后端合并(上).md
+    - 45.前后端合并(下): blog/测试平台系列(45) 前后端合并(下).md
 
   - 智囊团: friends/公众号.md
 
