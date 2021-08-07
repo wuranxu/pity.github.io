@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block disqus %}
 {#-
   This file was automatically generated - do not edit
 -#}
@@ -23,5 +26,12 @@
 	</script>
 <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
 </div>
+<div style="float: right;margin: 24px">
+    <span style="font-size: 16px" id="busuanzi_container_page_pv">本文阅读量 <span id="busuanzi_value_page_pv" style="color: #42a5f5;font-weight: bold"></span> 次</span>
+</div>
 <!-- City版安装代码已完成 -->
 {% endif %}
+
+
+{% endblock %}
+
