@@ -158,6 +158,8 @@ nav:
     - 81.编写在线执行Redis功能: blog/测试平台系列(81) 编写在线执行Redis功能.md
     - 82.解决APScheduler重复执行的问题: blog/测试平台系列(82) 解决APScheduler重复执行的问题.md
     - 83.前置条件支持Redis语句: blog/测试平台系列(83) 前置条件支持Redis语句.md
+    - 84.支持复制其他前置条件: blog/测试平台系列(84) 支持复制其他前置条件.md
+    - 85.把redis运用到实战中: blog/测试平台系列(85) 把redis运用到实战中.md
 
   - 智囊团: friends/公众号.md
 
