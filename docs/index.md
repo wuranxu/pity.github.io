@@ -4,7 +4,7 @@
 
     个人技术公众号: `米洛的测开日记`，欢迎大家关注我，掌握最新测试开发知识。
 
-![](https://gitee.com/woodywrx/picture/raw/master/2022-1-1/1641020334827-qrcode_for_gh_f52fb2135f68_430.jpg)
+![](http://oss.pity.fun/picture/2022-1-1/1641020334827-qrcode_for_gh_f52fb2135f68_430.jpg)
 
 !!! Example "关于Pity平台"
 
