@@ -12,7 +12,7 @@
 
   由于我们之前已经`不采用`mitmproxy.exe的方式启动，而是换成了将mitmproxy集成到FastApi启动的形式，所以我们目前启动pity则等于启动了`mitmproxy`。
   
-![](http://oss.pity.fun/picture/20220619125109.png)
+![](https://static.pity.fun/picture/20220619125109.png)
 
   所以我们不需要额外去官网操作了。 
   
@@ -22,11 +22,11 @@
   
   不过我们这里直接进入配置，打开`系统偏好设置`->`网络`:
 
-![](http://oss.pity.fun/picture/20220619131111.png)
+![](https://static.pity.fun/picture/20220619131111.png)
 
   接着我们点击`高级`按钮，进入相关的配置页面，注意，左侧要选择你对应的联网设备，wifi就选择wifi，USB网络霹雳网络桥等（有线网络）就选择对应的。
 
-![](http://oss.pity.fun/picture/20220619131250.png)
+![](https://static.pity.fun/picture/20220619131250.png)
 
   进入到代理页面，记得同时配置HTTP和HTTPS，对应的ip就是pity的启动ip，端口号则是pity mock配置的端口号，默认为7778（我这里没有配置，所以是别的端口）
   
@@ -36,11 +36,11 @@
 
   老规矩，配置完了代理以后，我们应当就能访问mitm.it了。
 
-![](http://oss.pity.fun/picture/20220619131553.png)
+![](https://static.pity.fun/picture/20220619131553.png)
 
   下载完毕以后，我们就可以下载证书了，mac的证书安装比较简单，双击后它会进入一个`钥匙串`页面。
 
-![](http://oss.pity.fun/picture/20220619131704.png)
+![](https://static.pity.fun/picture/20220619131704.png)
 
   接着我们找到刚才安装的mitmproxy证书，双击后展开`信任`栏，改为始终信任即可。
   
@@ -48,17 +48,17 @@
 
   我们来测试下录制生成功能。
 
-![](http://oss.pity.fun/picture/20220619131938.png)
+![](https://static.pity.fun/picture/20220619131938.png)
 
   至于这里说的配置好web代理，就是上述步骤。代理始终是作为一个中间人，拿到我们和目标之间的请求数据。
 
-![](http://oss.pity.fun/picture/Kapture%202022-06-19%20at%2013.21.56.gif)
+![](https://static.pity.fun/picture/Kapture%202022-06-19%20at%2013.21.56.gif)
 
 ### 有个疑惑
 
   目前为止，我们都是在本地访问mitmproxy，可是今天当我发现我用自己部署的服务器当代理，居然无法访问网络:
   
-![](http://oss.pity.fun/picture/20220619145154.png)
+![](https://static.pity.fun/picture/20220619145154.png)
   
   这个我目前还没有好的解决方案，如果大家内部公司用的话，应该不会经过`域名备案检测`的环节。
 
@@ -66,8 +66,8 @@
 
   今天的内容没有代码部分，只是给大家展示了一下mac环境的mitmproxy相关代理配置及使用，也泡出了一个问题。下一节我们来美化下用例生成新的内容，可以给大家看看谍照:
 
-![](http://oss.pity.fun/picture/20220619152336.png)
+![](https://static.pity.fun/picture/20220619152336.png)
 
-![](http://oss.pity.fun/picture/20220619152358.png)
+![](https://static.pity.fun/picture/20220619152358.png)
 
 
